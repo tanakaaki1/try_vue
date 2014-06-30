@@ -37,6 +37,6 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-gem 'rails-assets-bootstrap'
+gem 'rails-assets-bootstrap', '~>3.1.1'
 gem 'rails-assets-vue'
 
