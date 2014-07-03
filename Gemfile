@@ -40,3 +40,4 @@ gem 'spring',        group: :development
 gem 'rails-assets-bootstrap', '~>3.1.1'
 gem 'rails-assets-vue'
 
+gem 'faker'
