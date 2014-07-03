@@ -1,5 +1,12 @@
 <h1>Try vue.js</h1>
 <div id="app">
+  {{user.name}} | {{user.name_kana}}
+  <div>
+    <input type="text" v-model="user.name" placeholder="名前">
+    <input type="text" v-model="user.name_kana" placeholder="なまえ(ふりがな)">
+    <button class="btn btn-primary" v-on="click: submit">登録</button>
+  </div>
+
   {{msg}}
   <div><input type="text" v-model="q"></div>
   <table>
