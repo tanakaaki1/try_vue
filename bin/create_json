@@ -1,0 +1,28 @@
+# -*- coding: utf-8 -*-
+require File.expand_path('../../config/boot', __FILE__)
+require 'faker'
+require 'open-uri'
+require 'json'
+
+REG_KANA = /\A[あ-ん]+\Z/
+people = []
+
+300.times do |n|
+  Faker::Config.locale = :ja
+  ages = (18..60).to_a
+  person = {name: Faker::Name.name, age: ages.sample}
+  open("http://www.social-ime.com/api/?string=#{URI.encode(person[:name])}") do |f|
+    person[:name_kana] = f.read.encode("UTF-8").split("\n").map{|str|
+      str.split("\t").find{|s| s =~ REG_KANA }
+    }.compact.join(" ")
+  end
+  Faker::Config.locale = :en
+  person[:email] = Faker::Internet.email
+  person[:screen_name] = Faker::Internet.user_name
+  people << person
+  sleep 0.5
+end
+
+File.open(File.expand_path("../../public/people.json", __FILE__), "w") do |f|
+  f.puts people.to_json
+end
