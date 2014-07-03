@@ -1,4 +1,12 @@
 <h1>Try vue.js</h1>
 <div id="app">
   {{msg}}
+  <table>
+    <tr>
+      <th>名前</th><th>かな</th><th>メールアドレス</th>
+    </tr>
+    <tr v-repeat="people">
+      <td>{{name}}</td><td>{{name_kana}}</td><td>{{email}}</td>
+    </tr>
+  </table>
 </div>
